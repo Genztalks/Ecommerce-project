@@ -1,0 +1,69 @@
+import Navbar from './components/Navbar';
+import './App.css';
+import ProductCard from './components/ProductCard';
+import shoesImage from "./assets/shoes.jpg";
+import bagImage from "./assets/laptop-bag.jpg";
+import watchImage from "./assets/watch.jpg";
+import phoneImage from "./assets/phone.jpg";
+import { useState } from 'react';
+
+
+function App() {
+  const [cartCount, setCartCount] = useState(0);
+  return(
+    <nav className="navbar">
+      <div className="logo"></div>
+      <input className="search-bar" type="text" placeholder="Search products..." />
+      <button className="cart">Cart ({cartCount})</button>
+    </nav>
+  );
+  const products = [
+    { id: 1, name: "Shoes", price: 999,image: shoesImage },
+    { id: 2, name: "Watches", price: 1999,image: watchImage },
+    { id: 3, name: "Bags", price: 2999,image: bagImage },
+    { id: 4, name: "Phones", price: 3999,image: phoneImage }
+  ];
+
+  return (
+    <div>
+      <Navbar />
+      <h1>My Ecommerce Store</h1>
+      <p>Welcome to my Ecommerce website</p>
+      <button>Shop Now</button>
+     
+     <div className="products">
+
+        <ProductCard 
+        name="Shoes"
+        price="999"
+        image={shoesImage}
+        rating="4.5"
+        discount="10"
+        />
+      <ProductCard
+      name="Watches"
+      price="1999"
+      image={watchImage}
+      rating="4.0"
+      discount="15"
+      />
+      <ProductCard
+      name="Bags"
+      price="2999"
+      image={bagImage}
+      rating="4.2"
+      discount="20"
+      />
+      <ProductCard
+      name="Phones"
+      price="3999"
+      image={phoneImage}
+      rating="4.3"
+      discount="25"
+      />
+    </div>
+    </div>
+  );
+}
+
+export default App;
